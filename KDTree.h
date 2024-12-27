@@ -308,9 +308,9 @@ protected:
 
         int median = (int)sortedPoints.size() / 2;
         Node* node = new Node(sortedPoints[median]);
-        for (int i = median - 1; i >= 0; i--)
+       for (int i = median - 1; i >= 0; i--)
         {
-            if (sortedPoints[i][dim] == node->point[dim]) { node->point = sortedPoints[i]; median = i; }
+            if (!compare(sortedPoints[i][dim],node->point[dim],this->comparator)) { node->point = sortedPoints[i]; median = i; }
         }
         vector<vector<T>> leftPoints(sortedPoints.begin(), sortedPoints.begin() + median);
         vector<vector<T>> rightPoints(sortedPoints.begin() + median + 1, sortedPoints.end());
